@@ -1,0 +1,5 @@
+project_id = "rvzumdotvyxdrhfsmpjs"
+
+[functions.migration-proxy]
+# Called from the browser with the publishable key; user credentials travel in the request body only.
+verify_jwt = false

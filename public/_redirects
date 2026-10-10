@@ -1,0 +1,3 @@
+/migrate /app-shell.html 200
+/oauth/* /app-shell.html 200
+/github/* /app-shell.html 200

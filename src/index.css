@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 8%;
+    --primary: 160 84% 32%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 214 32% 94%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 214 32% 95%;
+    --muted-foreground: 215 16% 40%;
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 24% 88%;
+    --input: 214 24% 86%;
+    --ring: 160 84% 32%;
+  }
+  .dark {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 96%;
+    --card: 222 40% 8%;
+    --card-foreground: 210 40% 96%;
+    --primary: 158 64% 52%;
+    --primary-foreground: 222 47% 6%;
+    --secondary: 222 30% 13%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 222 30% 12%;
+    --muted-foreground: 215 18% 66%;
+    --destructive: 0 72% 58%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 25% 16%;
+    --input: 222 25% 20%;
+    --ring: 158 64% 52%;
+  }
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+  }
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image: linear-gradient(hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 75%);
+  }
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(172 70% 60%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+.prose-guide h2 {
+  @apply mt-12 mb-3 text-2xl font-semibold tracking-tight scroll-mt-24;
+}
+.prose-guide :where(section > h3) {
+  @apply mt-6 mb-2 text-lg font-semibold;
+}
+.prose-guide :where(section > p, .prose-guide > p) {
+  @apply my-3 leading-7 text-muted-foreground;
+}
+.prose-guide :where(section > ul, .prose-guide > ul) {
+  @apply my-3 list-disc space-y-1.5 pl-6 text-muted-foreground;
+}
+.prose-guide code {
+  @apply rounded bg-muted px-1.5 py-0.5 font-mono text-[0.85em] text-foreground;
+}
+.prose-guide a {
+  @apply text-primary underline underline-offset-4;
+}
