@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Bell, Boxes, CheckCircle2, Code2, Database, EyeOff, FolderOpen, Link2, Lock, Rocket, ShieldCheck, Table2, Trash2, Upload, UserRound, XCircle } from "lucide-react";
-import { PageShell, Seo, WaitlistForm } from "@/components/shared";
+import { PageShell, Seo, WaitlistForm, WhatsAppLink } from "@/components/shared";
 import { FaqList } from "@/components/seo-ui";
 import { Button } from "@/components/ui/button";
 import { Badge, Card } from "@/components/ui/misc";
@@ -268,6 +268,10 @@ export default function Landing() {
           <h2 id="waitlist-h" className="text-2xl font-bold tracking-tight">Pro and done-for-you migration coming soon</h2>
           <p className="mb-6 mt-2 text-muted-foreground">Too big or too stressful to do yourself? Join the waitlist and we'll let you know first.</p>
           <div className="mx-auto max-w-md"><WaitlistForm source="landing" /></div>
+          <div className="mx-auto mt-6 max-w-md border-t pt-6">
+            <p className="mb-3 text-sm text-muted-foreground">Need it done right now? Chat with us directly and we will help you migrate.</p>
+            <WhatsAppLink location="waitlist" className="h-10" />
+          </div>
         </Card>
       </section>
     </PageShell>

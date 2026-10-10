@@ -15,9 +15,13 @@ export const SITE = {
     role: "Maintainers of the free Lovable Cloud to Supabase Migrator",
     bio: "We build and maintain a free, browser-based tool that moves Lovable Cloud projects to a Supabase project you own. These guides document the same steps the tool automates.",
   },
+  // WhatsApp chat for done-for-you help. Digits only (country code first), used for wa.me links.
+  whatsapp: { number: "97470896755", display: "+974 7089 6755", message: "Hi! I need help migrating my Lovable Cloud project to Supabase." },
   // Minimum number of successful migrations before the public counter is shown on the homepage.
   counterThreshold: 50,
 };
 
 export const abs = (path: string) => `${SITE.url}${path === "/" ? "" : path}`;
 export const ogImage = (name: string) => `${SITE.url}/og/${name}.png`;
+
+export const whatsappUrl = (message: string = SITE.whatsapp.message) => `https://wa.me/${SITE.whatsapp.number}?text=${encodeURIComponent(message)}`;

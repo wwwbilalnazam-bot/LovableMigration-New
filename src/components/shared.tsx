@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Check, CheckCircle2, ChevronDown, Copy, HelpCircle, Loader2, Menu, Moon, Sun, X, Zap } from "lucide-react";
+import { Check, CheckCircle2, ChevronDown, Copy, HelpCircle, Loader2, Menu, MessageCircle, Moon, Sun, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/form";
 import { cn, copyText, isValidEmail } from "@/lib/utils";
 import { joinWaitlist } from "@/lib/supabase";
-import { abs, ogImage, SITE } from "@/content/site";
+import { abs, ogImage, SITE, whatsappUrl } from "@/content/site";
 import { guides } from "@/content/guides";
 import { track } from "@/lib/analytics";
 
@@ -200,14 +200,40 @@ export function Footer() {
   );
 }
 
+export function WhatsAppLink({ className, label = "Chat on WhatsApp", location }: { className?: string; label?: string; location: string }) {
+  return (
+    <a
+      href={whatsappUrl()}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => track("whatsapp_click", { location })}
+      className={cn("inline-flex items-center justify-center gap-2 rounded-md bg-[#25D366] px-4 text-sm font-semibold text-[#06260f] transition-all hover:bg-[#20bd5a] active:scale-[0.98]", className)}
+    >
+      <MessageCircle className="h-4 w-4" aria-hidden /> {label}
+    </a>
+  );
+}
+
 export function HelpButton() {
   return (
-    <Link
-      to="/faq"
-      className="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full border bg-card px-4 py-2.5 text-sm font-medium shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary"
-    >
-      <HelpCircle className="h-4 w-4" /> Need help?
-    </Link>
+    <div className="fixed bottom-5 right-5 z-40 flex items-center gap-2.5">
+      <Link
+        to="/faq"
+        className="inline-flex items-center gap-2 rounded-full border bg-card px-4 py-2.5 text-sm font-medium shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary"
+      >
+        <HelpCircle className="h-4 w-4" /> Need help?
+      </Link>
+      <a
+        href={whatsappUrl()}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => track("whatsapp_click", { location: "floating" })}
+        aria-label={`Chat with us on WhatsApp at ${SITE.whatsapp.display}`}
+        className="inline-flex h-11 items-center gap-2 rounded-full bg-[#25D366] px-3.5 text-sm font-semibold text-[#06260f] shadow-lg shadow-black/25 transition-all hover:-translate-y-0.5 hover:bg-[#20bd5a] sm:px-4"
+      >
+        <MessageCircle className="h-5 w-5" aria-hidden /> <span className="hidden sm:inline">WhatsApp</span>
+      </a>
+    </div>
   );
 }
 

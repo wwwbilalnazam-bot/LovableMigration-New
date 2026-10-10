@@ -3,7 +3,7 @@ import confetti from "canvas-confetti";
 import { motion } from "framer-motion";
 import { Download, HeartHandshake, PartyPopper, Share2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { CodeBlock, WaitlistForm } from "@/components/shared";
+import { CodeBlock, WaitlistForm, WhatsAppLink } from "@/components/shared";
 import { StepShell } from "@/components/wizard-ui";
 import { Button } from "@/components/ui/button";
 import { Alert, Card } from "@/components/ui/misc";
@@ -125,6 +125,7 @@ VITE_SUPABASE_PROJECT_ID="${state.projectRef}"`;
         <Button asChild>
           <Link to="/#waitlist"><HeartHandshake className="h-4 w-4" /> Need help? Book done-for-you migration</Link>
         </Button>
+        <WhatsAppLink location="done" className="h-10" />
         <Button variant="ghost" onClick={reset}>Start over</Button>
       </div>
     </StepShell>

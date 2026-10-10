@@ -1,4 +1,4 @@
-import { abs, ogImage, SITE } from "@/content/site";
+import { abs, ogImage, SITE, whatsappUrl } from "@/content/site";
 import type { Faq, Guide } from "@/content/guides";
 
 const ctx = "https://schema.org";
@@ -25,6 +25,7 @@ export const organizationLd = () => ({
   name: SITE.name,
   url: SITE.url,
   logo: `${SITE.url}/favicon.svg`,
+  contactPoint: { "@type": "ContactPoint", contactType: "customer support", telephone: `+${SITE.whatsapp.number}`, url: whatsappUrl() },
 });
 
 export const websiteLd = () => ({

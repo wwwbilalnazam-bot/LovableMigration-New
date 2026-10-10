@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/misc";
 import { guides } from "@/content/guides";
 import { compareFaqs, compareRows, faqs, noindexPages, pageMeta, troubleshooting } from "@/content/pages";
-import { SITE } from "@/content/site";
+import { SITE, whatsappUrl } from "@/content/site";
 import { breadcrumbLd, faqLd } from "@/lib/schema";
 
 function Page({ path, name, h1, lead, children, extraLd = [], trail }: { path: string; name: string; h1: string; lead?: string; children: ReactNode; extraLd?: object[]; trail?: { name: string; path: string }[] }) {
@@ -202,7 +202,9 @@ export function About() {
         <li><strong className="text-foreground">Honest content.</strong> Guides describe what really works, including the limits, and are dated so you know how fresh they are.</li>
       </ul>
       <h2 id="contact">Contact and feedback</h2>
-      <p>Found an error in a guide or a bug in the tool? Join the <Link to="/#waitlist">waitlist</Link> with a note or contact the maintainers using the address listed on this site's repository. Corrections are welcome and are credited in the guide's update date.</p>
+      <p>Found an error in a guide or a bug in the tool? Message us on <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer">WhatsApp at {SITE.whatsapp.display}</a>, or join the <Link to="/#waitlist">waitlist</Link>. Corrections are welcome and are credited in the guide's update date.</p>
+      <h2 id="service">Need it done for you?</h2>
+      <p>If you would rather not migrate yourself, chat with us on WhatsApp and tell us about your project. We will explain what is involved before you commit to anything.</p>
       <div className="not-prose my-8"><Button asChild size="lg"><Link to="/migrate">Start free migration <ArrowRight className="h-4 w-4" /></Link></Button></div>
     </Page>
   );
@@ -226,6 +228,8 @@ export function Privacy() {
       <p>The wizard saves progress (current step and project reference) in your browser's session storage, which is cleared when you close the tab. Keys and tokens are kept only in memory, so a page refresh asks you to reconnect.</p>
       <h2 id="analytics">Analytics and cookies</h2>
       <p>If analytics is enabled on this site, we use Google Analytics 4 with IP anonymization to count visits and key actions such as starting a migration. You can block it with your browser's privacy settings.</p>
+      <h2 id="whatsapp">WhatsApp chat</h2>
+      <p>If you message us on WhatsApp, your phone number and message are handled by WhatsApp and are visible to us so we can reply. We use them only to answer you and never add you to marketing lists without asking.</p>
       <h2 id="rights">Your rights</h2>
       <p>You can ask us to delete your waitlist email at any time. Because migrations store no personal data, there is nothing else to delete. You can revoke the tool's access in your Supabase account (Authorized apps) and GitHub settings (Applications).</p>
       <h2 id="changes">Changes</h2>
