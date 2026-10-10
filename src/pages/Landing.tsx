@@ -46,6 +46,7 @@ const compare: [string, string, string][] = [
 function MigrationCounter() {
   const [n, setN] = useState(0);
   useEffect(() => {
+    if (import.meta.env.VITE_SHOW_COUNTER !== "true") return; // enable after `supabase db push` adds migration_count()
     getMigrationCount().then(setN);
   }, []);
   if (n < SITE.counterThreshold) return null;

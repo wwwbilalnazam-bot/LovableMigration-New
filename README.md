@@ -67,5 +67,5 @@ npm run seo:audit                                     # checks titles, descripti
 - **Must set before deploy:** `VITE_SITE_URL` (canonicals, sitemap and OG tags use it; the build warns if it is missing). Optional: `VITE_GA_ID` (GA4) and `VITE_GSC_VERIFICATION` (Search Console meta tag).
 - **Hosting:** `vercel.json` (clean URLs, no trailing slash, rewrites and `X-Robots-Tag: noindex` for client-only routes) and `dist/_redirects` (Netlify) are included. The 404 page is `dist/404.html`.
 - **Content:** edit `src/content/` (`guides.ts`, `pages.ts`, `site.ts`, `testimonials.ts`). Titles must be 50-60 chars and descriptions 140-160; the audit enforces this. Set the real author name and bio in `site.ts` and review the privacy and terms text.
-- **Homepage counter:** run `supabase db push` to add `migration_count()`; the counter appears only after 50+ successful migrations.
+- **Homepage counter:** run `supabase db push` to add `migration_count()`, then set `VITE_SHOW_COUNTER=true`. The counter appears only after 50+ successful migrations.
 - **Analytics events:** start_migration, github_connected, supabase_connected, migration_success, migration_error, waitlist_signup.
